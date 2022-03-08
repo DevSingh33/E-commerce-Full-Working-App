@@ -1,5 +1,5 @@
 import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/screens/sign_in_screen/components/sign_form_widget.dart';
+import 'package:e_commerce/screens/sign_in_screen/components/sign_form.dart';
 
 import 'package:e_commerce/size_config.dart';
 import 'package:e_commerce/widgets/social_single_widget.dart';
