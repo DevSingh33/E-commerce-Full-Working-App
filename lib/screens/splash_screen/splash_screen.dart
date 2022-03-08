@@ -1,5 +1,6 @@
 import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/screens/components/splash_content_page.dart';
+import 'package:e_commerce/screens/sign_in_screen/sign_in_screen.dart';
+import 'package:e_commerce/screens/splash_screen/components/splash_content_page.dart';
 import 'package:e_commerce/size_config.dart';
 import 'package:e_commerce/widgets/default_button.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           children: [
@@ -79,7 +81,9 @@ class _SplashScreenState extends State<SplashScreen> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: DefaultButton(
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.of(context).pushNamed(SignInScreen.routeName);
+                      },
                       buttonText: 'Continue',
                     ),
                   ),
