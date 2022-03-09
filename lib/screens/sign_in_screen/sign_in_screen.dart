@@ -1,7 +1,6 @@
-import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/screens/sign_in_screen/components/sign_form.dart';
-
 import 'package:e_commerce/size_config.dart';
+import 'package:e_commerce/widgets/no_acc_sign_up_widget.dart';
 import 'package:e_commerce/widgets/social_single_widget.dart';
 
 import 'package:flutter/material.dart';
@@ -55,24 +54,7 @@ class SignInScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: getProportionateScreenHeight(20)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Don\'t have an accout?',
-                        style: TextStyle(
-                          fontSize: getProportionateScreenWidth(16),
-                        ),
-                      ),
-                      Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          fontSize: getProportionateScreenWidth(16),
-                          color: kPrimaryColor,
-                        ),
-                      ),
-                    ],
-                  ),
+                  const NoAccountSignUpWidget(),
                 ],
               ),
             ),

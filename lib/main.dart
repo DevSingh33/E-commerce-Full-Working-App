@@ -1,5 +1,7 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:e_commerce/screens/forgot_password%20_screen/forgot_password_screen.dart';
 import 'package:e_commerce/screens/sign_in_screen/sign_in_screen.dart';
+import 'package:e_commerce/screens/sign_in_success_screen/sign_in_success_screen.dart';
 import 'package:e_commerce/screens/splash_screen/splash_screen.dart';
 import 'package:e_commerce/theme.dart';
 
@@ -30,6 +32,9 @@ class MyApp extends StatelessWidget {
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
         SignInScreen.routeName: (context) => const SignInScreen(),
+        ForgotPasswordScreen.routeName: (context) =>
+            const ForgotPasswordScreen(),
+        SignInSuccessScreen.routeName: (context) => const SignInSuccessScreen(),
       },
     );
   }

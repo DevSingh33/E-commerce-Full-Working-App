@@ -1,6 +1,9 @@
 import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/screens/forgot_password%20_screen/forgot_password_screen.dart';
 import 'package:e_commerce/screens/sign_in_screen/components/form_errortexts_widget.dart';
 import 'package:e_commerce/screens/sign_in_screen/components/suffix_icon_widget.dart';
+import 'package:e_commerce/screens/sign_in_success_screen/sign_in_success_screen.dart';
+
 import 'package:e_commerce/size_config.dart';
 import 'package:e_commerce/widgets/default_button.dart';
 import 'package:flutter/material.dart';
@@ -43,10 +46,16 @@ class _SignInFormState extends State<SignInForm> {
                       }
                     }),
                 const Spacer(),
-                const Text(
-                  'Forgot Password',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context)
+                        .pushNamed(ForgotPasswordScreen.routeName);
+                  },
+                  child: const Text(
+                    'Forgot Password',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 )
               ],
@@ -58,6 +67,11 @@ class _SignInFormState extends State<SignInForm> {
                   if (_formKey.currentState != null) {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
+                      //TODO if registration success goto sign in success screen.
+                      if (errorTexts.isEmpty) {
+                        Navigator.of(context)
+                            .pushNamed(SignInSuccessScreen.routeName);
+                      }
                     }
                   }
                 },
