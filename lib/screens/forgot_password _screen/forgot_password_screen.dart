@@ -1,9 +1,5 @@
-import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/screens/forgot_password%20_screen/components/forgot_pass_form.dart';
-import 'package:e_commerce/screens/sign_in_screen/components/form_errortexts_widget.dart';
-import 'package:e_commerce/screens/sign_in_screen/components/suffix_icon_widget.dart';
+import 'package:e_commerce/screens/forgot_password%20_screen/components/forgot_password_form.dart';
 import 'package:e_commerce/size_config.dart';
-import 'package:e_commerce/widgets/default_button.dart';
 import 'package:e_commerce/widgets/no_acc_sign_up_widget.dart';
 import 'package:flutter/material.dart';
 
