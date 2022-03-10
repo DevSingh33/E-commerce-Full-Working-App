@@ -33,13 +33,14 @@ class SignUpScreen extends StatelessWidget {
                   SizedBox(height: SizeConfig.screenHeight * 0.08),
                   const SignUpForm(),
                   SizedBox(height: SizeConfig.screenHeight * 0.08),
-                  const SocialAccountsCard(),
+                  const Hero(tag: 'socialcard', child: SocialAccountsCard()),
                   SizedBox(height: getProportionateScreenHeight(20)),
                   Text(
                     'By continuing you confirm that you agree \nwith our Terms and Conditions',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.caption,
                   ),
+                  SizedBox(height: SizeConfig.screenHeight * 0.02), // 4%
                 ],
               ),
             ),

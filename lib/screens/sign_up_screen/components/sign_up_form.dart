@@ -45,35 +45,33 @@ class _SignUpFormState extends State<SignUpForm> {
         'user email = $userEmail, pass = $userPassword, confirm pass = $confirmPassword');
     return Form(
         key: _formKey,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              buildEmailTextField(),
-              SizedBox(height: getProportionateScreenHeight(30)),
-              buildPasswordTextField(),
-              SizedBox(height: getProportionateScreenHeight(30)),
-              buildConfirmPasswordTextField(),
-              FormErrorTextWidget(errorTexts: errorTexts),
-              SizedBox(height: getProportionateScreenHeight(40)),
-              DefaultButton(
-                onPress: () {
-                  if (_formKey.currentState != null) {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      // if all are valid then go to success screen
-                      Navigator.pushNamed(
-                          context, CompleteProfileScreen.routeName);
-                    }
+        child: Column(
+          children: [
+            buildEmailFormField(),
+            SizedBox(height: getProportionateScreenHeight(30)),
+            buildPasswordFormField(),
+            SizedBox(height: getProportionateScreenHeight(30)),
+            buildConfirmPasswordFormField(),
+            FormErrorTextWidget(errorTexts: errorTexts),
+            SizedBox(height: getProportionateScreenHeight(40)),
+            DefaultButton(
+              onPress: () {
+                if (_formKey.currentState != null) {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    // if all are valid then go to success screen
+                    Navigator.pushNamed(
+                        context, CompleteProfileScreen.routeName);
                   }
-                },
-                buttonText: 'Continue',
-              ),
-            ],
-          ),
+                }
+              },
+              buttonText: 'Continue',
+            ),
+          ],
         ));
   }
 
-  TextFormField buildEmailTextField() {
+  TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
       onSaved: (value) {
@@ -82,11 +80,12 @@ class _SignUpFormState extends State<SignUpForm> {
         }
       },
       onChanged: (value) {
-        if (value.isNotEmpty && errorTexts.contains(kEmailNullError)) {
+        if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
         } else if (emailValidatorRegExp.hasMatch(value)) {
           removeError(error: kInvalidEmailError);
         }
+        userEmail = value;
       },
       validator: (input) {
         if (input != null) {
@@ -111,7 +110,7 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 
-  TextFormField buildPasswordTextField() {
+  TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
       onSaved: (value) {
@@ -120,12 +119,12 @@ class _SignUpFormState extends State<SignUpForm> {
         }
       },
       onChanged: (value) {
-        userPassword = value;
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
         } else if (value.length >= 8) {
           removeError(error: kShortPassError);
         }
+        userPassword = value;
       },
       validator: (input) {
         if (input != null) {
@@ -150,7 +149,7 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 
-  TextFormField buildConfirmPasswordTextField() {
+  TextFormField buildConfirmPasswordFormField() {
     return TextFormField(
       obscureText: true,
       onSaved: (value) {
@@ -159,8 +158,6 @@ class _SignUpFormState extends State<SignUpForm> {
         }
       },
       onChanged: (value) {
-        confirmPassword = value;
-
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
         } else if (value.isNotEmpty && userPassword == confirmPassword) {

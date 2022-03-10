@@ -46,9 +46,9 @@ class _SignInFormState extends State<SignInForm> {
         key: _formKey,
         child: Column(
           children: [
-            buildEmailTextFormField(),
+            buildEmailFormField(),
             SizedBox(height: getProportionateScreenHeight(20)),
-            buildPasswordTextField(),
+            buildPasswordFormField(),
             SizedBox(height: getProportionateScreenHeight(20)),
             Row(
               children: [
@@ -96,7 +96,7 @@ class _SignInFormState extends State<SignInForm> {
         ));
   }
 
-  TextFormField buildEmailTextFormField() {
+  TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
       onSaved: (value) {
@@ -105,13 +105,13 @@ class _SignInFormState extends State<SignInForm> {
         }
       },
       onChanged: (value) {
-        userEmail = value;
         print('email = $userEmail');
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
         } else if (emailValidatorRegExp.hasMatch(value)) {
           removeError(error: kInvalidEmailError);
         }
+        userEmail = value;
       },
       validator: (input) {
         if (input != null) {
@@ -136,7 +136,7 @@ class _SignInFormState extends State<SignInForm> {
     );
   }
 
-  TextFormField buildPasswordTextField() {
+  TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
       onSaved: (value) {
@@ -145,12 +145,12 @@ class _SignInFormState extends State<SignInForm> {
         }
       },
       onChanged: (value) {
-        userPassword = value;
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
         } else if (value.length >= 8) {
           removeError(error: kShortPassError);
         }
+        userPassword = value;
       },
       validator: (input) {
         if (input != null) {

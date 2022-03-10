@@ -1,3 +1,4 @@
+import 'package:e_commerce/screens/otp_screen/otp_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:e_commerce/screens/complete_profile_screen/complete_profile_screen.dart';
@@ -14,4 +15,5 @@ final Map<String, WidgetBuilder> routes = {
   SignInSuccessScreen.routeName: (context) => const SignInSuccessScreen(),
   SignUpScreen.routeName: (context) => const SignUpScreen(),
   CompleteProfileScreen.routeName: (context) => const CompleteProfileScreen(),
+  OtpScreen.routeName: (context) => const OtpScreen(),
 };
