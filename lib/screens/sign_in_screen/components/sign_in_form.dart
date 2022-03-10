@@ -1,12 +1,12 @@
-import 'package:e_commerce/constants.dart';
+import 'package:flutter/material.dart';
+
 import 'package:e_commerce/screens/forgot_password%20_screen/forgot_password_screen.dart';
 import 'package:e_commerce/screens/sign_in_screen/components/form_errortexts_widget.dart';
 import 'package:e_commerce/screens/sign_in_screen/components/suffix_icon_widget.dart';
 import 'package:e_commerce/screens/sign_in_success_screen/sign_in_success_screen.dart';
-
+import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/size_config.dart';
 import 'package:e_commerce/widgets/default_button.dart';
-import 'package:flutter/material.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({
@@ -20,9 +20,26 @@ class SignInForm extends StatefulWidget {
 class _SignInFormState extends State<SignInForm> {
   final _formKey = GlobalKey<FormState>();
   List<String> errorTexts = [];
-  late String userEmail;
-  late String userPassword;
+  String userEmail = 'default@email.com';
+  String userPassword = 'defaultpassword';
   bool rememberUser = false;
+
+  void addError({required String error}) {
+    if (!errorTexts.contains(error)) {
+      setState(() {
+        errorTexts.add(error);
+      });
+    }
+  }
+
+  void removeError({required String error}) {
+    if (errorTexts.contains(error)) {
+      setState(() {
+        errorTexts.remove(error);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -68,10 +85,9 @@ class _SignInFormState extends State<SignInForm> {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
                       //TODO if registration success goto sign in success screen.
-                      if (errorTexts.isEmpty) {
-                        Navigator.of(context)
-                            .pushNamed(SignInSuccessScreen.routeName);
-                      }
+
+                      Navigator.of(context)
+                          .pushNamed(SignInSuccessScreen.routeName);
                     }
                   }
                 },
@@ -83,35 +99,28 @@ class _SignInFormState extends State<SignInForm> {
   TextFormField buildEmailTextFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) {
-        if (newValue != null) {
-          userEmail = newValue;
-          print(userEmail);
+      onSaved: (value) {
+        if (value != null) {
+          userEmail = value;
         }
       },
       onChanged: (value) {
-        if (value.isNotEmpty && errorTexts.contains(kEmailNullError)) {
-          setState(() {
-            errorTexts.remove(kEmailNullError);
-          });
-        } else if (emailValidatorRegExp.hasMatch(value) &&
-            errorTexts.contains(kInvalidEmailError)) {
-          setState(() {
-            errorTexts.remove(kInvalidEmailError);
-          });
+        userEmail = value;
+        print('email = $userEmail');
+        if (value.isNotEmpty) {
+          removeError(error: kEmailNullError);
+        } else if (emailValidatorRegExp.hasMatch(value)) {
+          removeError(error: kInvalidEmailError);
         }
       },
       validator: (input) {
         if (input != null) {
-          if (input.isEmpty && !errorTexts.contains(kEmailNullError)) {
-            setState(() {
-              errorTexts.add(kEmailNullError);
-            });
-          } else if (!emailValidatorRegExp.hasMatch(input) &&
-              !errorTexts.contains(kInvalidEmailError)) {
-            setState(() {
-              errorTexts.add(kInvalidEmailError);
-            });
+          if (input.isEmpty) {
+            addError(error: kEmailNullError);
+            return '';
+          } else if (!emailValidatorRegExp.hasMatch(input)) {
+            addError(error: kInvalidEmailError);
+            return '';
           }
         }
         return null;
@@ -130,34 +139,27 @@ class _SignInFormState extends State<SignInForm> {
   TextFormField buildPasswordTextField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) {
-        if (newValue != null) {
-          userPassword = newValue;
-          print(userPassword);
+      onSaved: (value) {
+        if (value != null) {
+          userPassword = value;
         }
       },
       onChanged: (value) {
-        if (value.isNotEmpty && errorTexts.contains(kPassNullError)) {
-          setState(() {
-            errorTexts.remove(kPassNullError);
-          });
-        } else if (value.length >= 8 && errorTexts.contains(kShortPassError)) {
-          setState(() {
-            errorTexts.remove(kShortPassError);
-          });
+        userPassword = value;
+        if (value.isNotEmpty) {
+          removeError(error: kPassNullError);
+        } else if (value.length >= 8) {
+          removeError(error: kShortPassError);
         }
       },
       validator: (input) {
         if (input != null) {
-          if (input.isEmpty && !errorTexts.contains(kPassNullError)) {
-            setState(() {
-              errorTexts.add(kPassNullError);
-            });
-          } else if (input.length < 8 &&
-              !errorTexts.contains(kShortPassError)) {
-            setState(() {
-              errorTexts.add(kShortPassError);
-            });
+          if (input.isEmpty) {
+            addError(error: kPassNullError);
+            return '';
+          } else if (input.length < 8) {
+            addError(error: kShortPassError);
+            return '';
           }
         }
         return null;

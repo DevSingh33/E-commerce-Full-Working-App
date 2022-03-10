@@ -1,6 +1,7 @@
-import 'package:e_commerce/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:e_commerce/size_config.dart';
 
 class SuffixIconWidget extends StatelessWidget {
   const SuffixIconWidget({

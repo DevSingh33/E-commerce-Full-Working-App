@@ -1,9 +1,10 @@
-import 'package:e_commerce/constants.dart';
+import 'package:flutter/material.dart';
+
 import 'package:e_commerce/screens/sign_in_screen/components/form_errortexts_widget.dart';
 import 'package:e_commerce/screens/sign_in_screen/components/suffix_icon_widget.dart';
+import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/size_config.dart';
 import 'package:e_commerce/widgets/default_button.dart';
-import 'package:flutter/material.dart';
 
 class ForgotPasswordForm extends StatefulWidget {
   const ForgotPasswordForm({Key? key}) : super(key: key);
@@ -27,7 +28,6 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
             onSaved: (newValue) {
               if (newValue != null) {
                 userEmail = newValue;
-                print(userEmail);
               }
             },
             onChanged: (value) {

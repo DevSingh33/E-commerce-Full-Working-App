@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'package:e_commerce/screens/sign_in_screen/components/sign_in_form.dart';
+import 'package:e_commerce/screens/sign_up_screen/components/sign_up_form.dart';
+import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/size_config.dart';
-import 'package:e_commerce/widgets/no_acc_sign_up_widget.dart';
 import 'package:e_commerce/widgets/social_accounts_card.dart';
 
-class SignInScreen extends StatelessWidget {
-  static const routeName = '/sign_in';
-  const SignInScreen({Key? key}) : super(key: key);
-
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
+  static const routeName = '/sign_up';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Sign In'),
+        title: const Text('Sign Up'),
       ),
       body: SafeArea(
         child: SizedBox(
@@ -26,25 +24,22 @@ class SignInScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: SizeConfig.screenHeight * 0.04),
-                  Text(
-                    'Welcome Back',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: getProportionateScreenWidth(28),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  SizedBox(height: SizeConfig.screenHeight * 0.04), // 4%
+                  Text('Register Account', style: headingStyle),
                   const Text(
-                    'Sign in with your email and password \nor continue with social media.',
+                    'Complete with your details or continue \nwith social media',
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: SizeConfig.screenHeight * 0.08),
-                  const SignInForm(),
+                  const SignUpForm(),
                   SizedBox(height: SizeConfig.screenHeight * 0.08),
                   const SocialAccountsCard(),
                   SizedBox(height: getProportionateScreenHeight(20)),
-                  const NoAccountSignUpWidget(),
+                  Text(
+                    'By continuing you confirm that you agree \nwith our Terms and Conditions',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.caption,
+                  ),
                 ],
               ),
             ),

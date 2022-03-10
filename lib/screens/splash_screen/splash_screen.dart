@@ -1,9 +1,10 @@
-import 'package:e_commerce/constants.dart';
+import 'package:flutter/material.dart';
+
 import 'package:e_commerce/screens/sign_in_screen/sign_in_screen.dart';
 import 'package:e_commerce/screens/splash_screen/components/splash_content_page.dart';
+import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/size_config.dart';
 import 'package:e_commerce/widgets/default_button.dart';
-import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = '/splash_screen';

@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:e_commerce/size_config.dart';
 import 'package:e_commerce/widgets/default_button.dart';
-import 'package:flutter/material.dart';
 
 class SignInSuccessScreen extends StatelessWidget {
   const SignInSuccessScreen({Key? key}) : super(key: key);
