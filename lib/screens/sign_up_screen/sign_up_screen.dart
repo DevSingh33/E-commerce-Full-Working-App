@@ -17,6 +17,7 @@ class SignUpScreen extends StatelessWidget {
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
+          height: SizeConfig.screenHeight,
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenWidth(20),
@@ -24,7 +25,7 @@ class SignUpScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: SizeConfig.screenHeight * 0.04), // 4%
+                  SizedBox(height: SizeConfig.screenHeight * 0.02), // 4%
                   Text('Register Account', style: headingStyle),
                   const Text(
                     'Complete with your details or continue \nwith social media',

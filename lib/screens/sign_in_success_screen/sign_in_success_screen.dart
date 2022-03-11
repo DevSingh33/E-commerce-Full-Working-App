@@ -16,6 +16,7 @@ class SignInSuccessScreen extends StatelessWidget {
       ),
       body: SizedBox(
         width: double.infinity,
+        height: SizeConfig.screenHeight,
         child: Column(
           children: [
             SizedBox(height: SizeConfig.screenHeight * 0.04),

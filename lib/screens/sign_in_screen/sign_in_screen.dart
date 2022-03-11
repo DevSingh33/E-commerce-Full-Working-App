@@ -19,6 +19,7 @@ class SignInScreen extends StatelessWidget {
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
+          height: SizeConfig.screenHeight,
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenWidth(20),
@@ -26,7 +27,7 @@ class SignInScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: SizeConfig.screenHeight * 0.04),
+                  SizedBox(height: SizeConfig.screenHeight * 0.02),
                   Text(
                     'Welcome Back',
                     style: TextStyle(
