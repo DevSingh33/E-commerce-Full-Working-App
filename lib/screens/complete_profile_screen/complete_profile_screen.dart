@@ -13,6 +13,7 @@ class CompleteProfileScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Sign Up')),
       body: SizedBox(
         width: double.infinity,
+        height: SizeConfig.screenHeight,
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: getProportionateScreenWidth(20),
